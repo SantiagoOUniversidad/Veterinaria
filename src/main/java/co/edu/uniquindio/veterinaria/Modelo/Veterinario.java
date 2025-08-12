@@ -3,6 +3,8 @@ package co.edu.uniquindio.veterinaria.Modelo;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
+import java.util.List;
+
 @Data
 @SuperBuilder
 @EqualsAndHashCode(callSuper = true)
@@ -10,4 +12,5 @@ import lombok.experimental.SuperBuilder;
 
 public class Veterinario extends Persona {
     private String especialidad;
+    private List<Cita> listaCitasVeterinario;
 }
