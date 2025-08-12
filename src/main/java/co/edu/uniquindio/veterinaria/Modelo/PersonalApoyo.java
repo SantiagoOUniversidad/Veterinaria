@@ -11,5 +11,4 @@ import java.util.List;
 @ToString(callSuper = true)
 
 public class PersonalApoyo extends Persona {
-    private List<Cita> listaCitas;
 }
