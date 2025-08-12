@@ -53,5 +53,51 @@ public class Veterinaria {
             }
         } return null;
     }
+
+
+
+    public boolean verificarMascotaExiste(Mascota mascota) {
+        for (Mascota mascota1: listaMascotas) {
+            if(mascota.getIdveterinario().equals(mascota1.getIdveterinario())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean agregarMascota(Mascota mascota) {
+        if (verificarMascotaExiste(mascota)) {
+            return false;
+        } else {
+            listaMascotas.add(mascota);
+            return true;
+        }
+    }
+
+    public boolean eliminarMascota(String id) {
+        for (int i = 0; i < listaMascotas.size(); i++) {
+            if(listaMascotas.get(i).getIdveterinario().equals(id)) {
+                listaMascotas.remove(i);
+                return true;
+            }
+        } return false;
+    }
+
+    public boolean actualizarMascota(String id, Mascota mascota) {
+        for (int i = 0; i < listaMascotas.size(); i++) {
+            if(listaMascotas.get(i).getIdveterinario().equals(id)) {
+                listaMascotas.set(i, mascota);
+                return true;
+            }
+        } return false;
+    }
+
+    public Mascota mostrarMascota(String id) {
+        for (Mascota mascota : listaMascotas) {
+            if(mascota.getIdveterinario().equals(id)) {
+                return mascota;
+            }
+        } return null;
+    }
 }
 
