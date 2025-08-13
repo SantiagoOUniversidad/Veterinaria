@@ -20,24 +20,30 @@ public class PersonalApoyo extends Persona {
     }
 
     public boolean eliminarPropietario(Veterinaria veterinaria, String id) {
-        if (veterinaria == null || id == null) {
-            return false;
+        if (veterinaria == null || id == null) return false;
+        Persona persona = veterinaria.mostrarPersona(id);
+        if (persona instanceof Propietario) {
+            return veterinaria.eliminarPersona(id);
         }
-        return veterinaria.eliminarPersona(id);
+        return false;
     }
 
     public boolean actualizarPropietario(Veterinaria veterinaria, Propietario propietario, String id) {
-        if (veterinaria == null || id == null || propietario == null) {
-            return false;
+        if (veterinaria == null || id == null || propietario == null) return false;
+        Persona persona = veterinaria.mostrarPersona(id);
+        if (persona instanceof Propietario) {
+            return veterinaria.actualizarPersona(id, propietario);
         }
-        return veterinaria.actualizarPersona(id, propietario);
+        return false;
     }
 
-    public Persona mostrarPropietario(Veterinaria veterinaria, String id) {
-        if (veterinaria == null || id == null) {
-            return null;
+    public Propietario mostrarPropietario(Veterinaria veterinaria, String id) {
+        if (veterinaria == null || id == null) return null;
+        Persona persona = veterinaria.mostrarPersona(id);
+        if (persona instanceof Propietario) {
+            return (Propietario) persona;
         }
-        return veterinaria.mostrarPersona(id);
+        return null;
     }
 
     public boolean agregarMascota(Veterinaria veterinaria, Mascota mascota) {

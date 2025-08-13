@@ -108,5 +108,72 @@ public class Veterinaria {
             }
         } return null;
     }
+    public boolean agregarVeterinario(Veterinario veterinario) {
+        if (veterinario == null) {
+            return false;
+        }
+        return agregarPersona(veterinario);
+    }
+
+    public boolean eliminarVeterinario(String id) {
+        if (id == null) return false;
+        Persona persona = mostrarPersona(id);
+        if (persona instanceof Veterinario) {
+            return eliminarPersona(id);
+        }
+        return false;
+    }
+
+    public boolean actalizarVeterinario(Veterinario veterinario, String id) {
+        if ( id == null || veterinario == null) return false;
+        Persona persona = mostrarPersona(id);
+        if (persona instanceof Veterinario) {
+            return actualizarPersona(id, veterinario);
+        }
+        return false;
+    }
+
+    public Veterinario mostrarVeterinario(String id) {
+        if (id == null) return null;
+        Persona persona = mostrarPersona(id);
+        if (persona instanceof Veterinario) {
+            return (Veterinario) persona;
+        }
+        return null;
+    }
+
+    public boolean agregarPersonalApoyo(PersonalApoyo personalApoyo) {
+        if (personalApoyo == null) {
+            return false;
+        }
+        return agregarPersona(personalApoyo);
+    }
+
+    public boolean eliminarPersonalApoyo(String id) {
+        if (id == null) return false;
+        Persona persona = mostrarPersona(id);
+        if (persona instanceof PersonalApoyo) {
+            return eliminarPersona(id);
+        }
+        return false;
+    }
+
+    public boolean actualizarPersonalApoyo(PersonalApoyo personalApoyo, String id) {
+        if ( id == null || personalApoyo == null) return false;
+        Persona persona = mostrarPersona(id);
+        if (persona instanceof PersonalApoyo) {
+            return actualizarPersona(id, personalApoyo);
+        }
+        return false;
+    }
+
+    public PersonalApoyo mostrarPersonalApoyo(String id) {
+        if (id == null) return null;
+        Persona persona = mostrarPersona(id);
+        if (persona instanceof PersonalApoyo) {
+            return (PersonalApoyo) persona;
+        }
+        return null;
+    }
 }
 
