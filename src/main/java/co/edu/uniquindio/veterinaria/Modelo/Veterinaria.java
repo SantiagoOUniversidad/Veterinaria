@@ -1,14 +1,13 @@
 package co.edu.uniquindio.veterinaria.Modelo;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.ToString;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 import java.util.List;
 
 @Data
 @SuperBuilder
+@AllArgsConstructor
 
 
 public class Veterinaria {
