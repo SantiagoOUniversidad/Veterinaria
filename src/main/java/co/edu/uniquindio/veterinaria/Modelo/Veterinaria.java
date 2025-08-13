@@ -175,5 +175,49 @@ public class Veterinaria {
         }
         return null;
     }
+    //validacion existencia cita
+    public boolean verificarCitaExiste(Cita cita) {
+        for (Cita cita1 : listaCitas) {
+            if(cita.getIdCita().equals(cita1.getIdCita())) {
+                return true;
+            }
+        }
+        return false;
+    }
+    // agregar cita a la lista
+    public boolean agregarCita(Cita cita) {
+        if (verificarCitaExiste(cita)) {
+            return false;
+        } else {
+            listaCitas.add(cita);
+            return true;
+        }
+    }
+    // eliminar cita de la lista
+    public boolean eliminarCita(String id) {
+        for (int i = 0; i < listaCitas.size(); i++) {
+            if(listaCitas.get(i).getIdCita().equals(id)) {
+                listaCitas.remove(i);
+                return true;
+            }
+        } return false;
+    }
+    //actualizar cita de la lista
+    public boolean actualizarCita(String id, Cita cita) {
+        for (int i = 0; i < listaCitas.size(); i++) {
+            if(listaCitas.get(i).getIdCita().equals(id)) {
+                listaCitas.set(i, cita);
+                return true;
+            }
+        } return false;
+    }
+    //mostrar cita en la lista
+    public Cita mostrarCita(String id) {
+        for (Cita cita: listaCitas) {
+            if(cita.getIdCita().equals(id)) {
+                return cita;
+            }
+        } return null;
+    }
 }
 

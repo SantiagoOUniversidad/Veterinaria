@@ -14,6 +14,7 @@ import java.time.LocalTime;
 @AllArgsConstructor
 
 public class Cita {
+    private String idCita;
     private LocalDate fecha;
     private LocalTime hora;
     private EstadoConsulta estadoConsulta;

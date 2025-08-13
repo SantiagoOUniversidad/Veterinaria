@@ -74,4 +74,29 @@ public class PersonalApoyo extends Persona {
         return veterinaria.mostrarMascota(idVeterinario);
     }
 
+    public boolean agregarCita(Veterinaria veterinaria,Cita cita) {
+       if (veterinaria == null || cita == null) {
+           return false;
+       }
+       return veterinaria.agregarCita(cita);
+    }
+    public boolean eliminarCita(Veterinaria veterinaria, String id) {
+        if (veterinaria == null || id == null) {
+            return false;
+        }
+        return veterinaria.eliminarCita(id);
+    }
+    public boolean actualizarCita(Veterinaria veterinaria, Cita cita, String idCita) {
+        if (veterinaria == null || idCita == null|| cita == null) {
+            return false;
+        }
+        return veterinaria.actualizarCita(idCita, cita);
+    }
+    public Cita mostrarCita(Veterinaria veterinaria, String idCita) {
+        if (veterinaria == null || idCita == null) {
+            return null;
+        }
+        return veterinaria.mostrarCita(idCita);
+    }
+
 }
