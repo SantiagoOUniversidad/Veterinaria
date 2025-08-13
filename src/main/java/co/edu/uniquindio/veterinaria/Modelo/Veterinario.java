@@ -13,4 +13,5 @@ import java.util.List;
 public class Veterinario extends Persona {
     private String especialidad;
     private List<Cita> listaCitasVeterinario;
+    private List<Consulta> listaConsultasVeterinario;
 }
