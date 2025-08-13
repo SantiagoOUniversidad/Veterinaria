@@ -19,5 +19,4 @@ public class Cita {
     private EstadoConsulta estadoConsulta;
     private Veterinario veterinario;
     private Mascota mascota;
-    // hola
 }
