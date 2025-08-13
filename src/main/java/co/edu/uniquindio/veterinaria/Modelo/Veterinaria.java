@@ -10,6 +10,7 @@ import java.util.List;
 @Data
 @SuperBuilder
 
+//Modelo inicio
 
 public class Veterinaria {
     private String nombre;
