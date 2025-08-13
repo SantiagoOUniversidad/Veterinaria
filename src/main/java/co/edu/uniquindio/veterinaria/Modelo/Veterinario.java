@@ -16,12 +16,14 @@ public class Veterinario extends Persona {
     private List<Cita> listaCitasVeterinario;
     private List<Consulta> listaConsultasVeterinario;
 
+    // agenda de citas unicamente del veterinario
     public List<Cita> agendaMedico(Veterinaria veterinaria,Veterinario veterinario) {
         if (veterinaria.getListaCitas().contains(veterinario)) {
             return listaCitasVeterinario;
         }
         return null;
     }
+    // crear consulta
     public boolean crearConsulta(Consulta consulta) {
         if (consulta == null) {
             return false;
@@ -29,7 +31,7 @@ public class Veterinario extends Persona {
         listaConsultasVeterinario.add(consulta);
         return true;
     }
-
+    // historial de consultas(historial medico) de la mascota
     public List<Consulta> historialMascota(Mascota mascota) {
         List<Consulta> listaConsultasMascotas = new ArrayList<>();
         for (Consulta consulta : listaConsultasVeterinario) {
