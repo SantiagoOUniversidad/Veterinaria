@@ -1,9 +1,6 @@
 package co.edu.uniquindio.veterinaria.Controladores;
 
-import co.edu.uniquindio.veterinaria.Modelo.Mascota;
-import co.edu.uniquindio.veterinaria.Modelo.PersonalApoyo;
-import co.edu.uniquindio.veterinaria.Modelo.Propietario;
-import co.edu.uniquindio.veterinaria.Modelo.Veterinaria;
+import co.edu.uniquindio.veterinaria.Modelo.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -20,6 +17,7 @@ import java.util.ResourceBundle;
 
 public class panelPyMControlador implements Initializable {
     Veterinaria veterinaria = Veterinaria.getInstancia();
+    Sesion sesion = Sesion.getInstancia();
     ControladorPrincipal controladorPrincipal = ControladorPrincipal.getInstancia();
     PersonalApoyo personalApoyo = PersonalApoyo.builder().build();
 
@@ -90,6 +88,27 @@ public class panelPyMControlador implements Initializable {
     @FXML
     void onEliminarMas(ActionEvent event) {
         eliminarMascota();
+    }
+
+    @FXML
+    void onAgregarMascotaPro(ActionEvent event) {
+        agregarMascotaPropietario();
+    }
+
+    private void agregarMascotaPropietario() {
+        Mascota mascota = lvMascotas.getSelectionModel().getSelectedItem();
+        String cedula  = txtCedulaPro.getText();
+        try {
+            if (personalApoyo.mostrarPropietario(veterinaria, cedula) == null){
+                throw new Exception("Error agregando mascota al propietario");
+            } else {
+                Propietario propietario = personalApoyo.mostrarPropietario(veterinaria, cedula);
+                propietario.getListaMascotasPropietario().add(mascota);
+                controladorPrincipal.crearAlerta("Mascota asignada", Alert.AlertType.INFORMATION);
+            }
+        } catch (Exception e) {
+            controladorPrincipal.crearAlerta(e.getMessage(), Alert.AlertType.ERROR);
+        }
     }
 
     private void eliminarMascota() {
