@@ -20,24 +20,24 @@
                      <children>
                         <Separator prefHeight="30.0" prefWidth="260.0" />
                         <Label text="Veterinario" />
-                        <TextField fx:id="txtNombreVet" text="Nombre">
+                        <TextField fx:id="txtNombreVet" promptText="Nombre">
                            <VBox.margin>
                               <Insets bottom="10.0" top="10.0" />
                            </VBox.margin>
                         </TextField>
-                        <TextField fx:id="txtCedulaVet" text="Cedula">
+                        <TextField fx:id="txtCedulaVet" promptText="Cedula">
                            <VBox.margin>
                               <Insets bottom="10.0" />
                            </VBox.margin>
                         </TextField>
-                        <TextField fx:id="txtEspecialidad" text="Especialidad" />
+                        <TextField fx:id="txtEspecialidad" promptText="Especialidad" />
                         <Button mnemonicParsing="false" onAction="#onAgregarVet" text="Agregar veterinario">
                            <VBox.margin>
                               <Insets top="15.0" />
                            </VBox.margin>
                         </Button>
                         <Separator prefHeight="30.0" prefWidth="260.0" />
-                        <TextField text="Cedula a eliminar" fx:id="txtEliminarVet"/>
+                        <TextField promptText="Cedula a eliminar" fx:id="txtEliminarVet"/>
                         <Button mnemonicParsing="false" text="Eliminar veterinario" onAction="#onEliminarVet">
                            <VBox.margin>
                               <Insets top="10.0" />
@@ -53,12 +53,12 @@
                      <children>
                         <Separator prefHeight="30.0" prefWidth="260.0" />
                         <Label text="Personal Apoyo" />
-                        <TextField text="Nombre" fx:id="txtNombreApoyo">
+                        <TextField promptText="Nombre" fx:id="txtNombreApoyo">
                            <VBox.margin>
                               <Insets top="10.0" />
                            </VBox.margin>
                         </TextField>
-                        <TextField text="Cedula" fx:id="txtCedulaApoyo">
+                        <TextField promptText="Cedula" fx:id="txtCedulaApoyo">
                            <VBox.margin>
                               <Insets top="10.0" />
                            </VBox.margin>
@@ -69,7 +69,7 @@
                            </VBox.margin>
                         </Button>
                         <Separator prefHeight="30.0" prefWidth="260.0" />
-                        <TextField text="Cedula a eliminar" fx:id="txtEliminarApoyo"/>
+                        <TextField promptText="Cedula a eliminar" fx:id="txtEliminarApoyo"/>
                         <Button mnemonicParsing="false" prefWidth="212.0" text="Eliminar Personal de Apoyo" onAction="#onEliminarApoyo">
                            <VBox.margin>
                               <Insets top="10.0" />

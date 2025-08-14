@@ -1,6 +1,7 @@
 package co.edu.uniquindio.veterinaria.Controladores;
 
 import co.edu.uniquindio.veterinaria.Modelo.Persona;
+import co.edu.uniquindio.veterinaria.Modelo.Sesion;
 import co.edu.uniquindio.veterinaria.Modelo.Veterinaria;
 import co.edu.uniquindio.veterinaria.Modelo.Veterinario;
 import javafx.event.ActionEvent;
@@ -39,9 +40,15 @@ public class inicioSesionControlador {
             }
             if (veterinaria.mostrarPersona(cedula) != null){
                 if (veterinaria.mostrarPersona(cedula) instanceof Veterinario){
+                    Sesion sesion = Sesion.getInstancia();
+                    sesion.setPersona(veterinaria.mostrarPersona(cedula));
                     ControladorPrincipal.openView("panelVeterinario.fxml", "Panel de Veterinario", new Stage());
+                    ControladorPrincipal.cerrarVentana((Stage) txtCedula.getScene().getWindow());
                 } else {
+                    Sesion sesion = Sesion.getInstancia();
+                    sesion.setPersona(veterinaria.mostrarPersona(cedula));
                     ControladorPrincipal.openView("panelPersonalApoyo.fxml", "Panel de Personal de Apoyo", new Stage());
+                    ControladorPrincipal.cerrarVentana((Stage) txtCedula.getScene().getWindow());
                 }
             }
         } catch (Exception e) {

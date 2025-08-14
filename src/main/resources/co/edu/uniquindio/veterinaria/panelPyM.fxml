@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.veterinaria.Controladores.panelPyMControlador">
+   <children>
+      <SplitPane dividerPositions="0.5543478260869565" prefHeight="400.0" prefWidth="600.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <VBox prefHeight="398.0" prefWidth="328.0">
+                     <children>
+                        <Label text="Propietario" />
+                        <TextField fx:id="txtNombrePro" promptText="Nombre">
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin></TextField>
+                        <TextField promptText="Cedula" fx:id="txtCedulaPro">
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin></TextField>
+                        <TextField promptText="Telefono" fx:id="txtTelefono">
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin></TextField>
+                        <TextField promptText="Direccion" fx:id="txtDireccion">
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin></TextField>
+                        <Label text="Mascotas">
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <ListView prefHeight="200.0" prefWidth="200.0" fx:id="lvMascotas"/>
+                        <HBox prefHeight="68.0" prefWidth="331.0">
+                           <children>
+                              <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="96.0" text="A. Mascota">
+                                 <HBox.margin>
+                                    <Insets top="10.0" />
+                                 </HBox.margin>
+                              </Button>
+                              <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="78.0" text="Agregar" onAction="#onAgregarPro">
+                                 <HBox.margin>
+                                    <Insets left="20.0" top="10.0" />
+                                 </HBox.margin>
+                              </Button>
+                              <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="68.0" text="Editar" onAction="#onEditarPro">
+                                 <HBox.margin>
+                                    <Insets left="20.0" top="10.0" />
+                                 </HBox.margin>
+                              </Button>
+                              <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="82.0" text="Eliminar" onAction="#onEliminarPro">
+                                 <HBox.margin>
+                                    <Insets left="20.0" top="10.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <VBox prefHeight="398.0" prefWidth="263.0">
+                     <children>
+                        <Label text="Mascota" />
+                        <TextField promptText="Nombre" fx:id="txtNombreMas">
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <TextField promptText="Especie" fx:id="txtEspecie">
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <TextField promptText="Raza" fx:id="txtRaza">
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <TextField promptText="Edad" fx:id="txtEdad">
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <TextField promptText="Cedula veterinario" fx:id="txtIdVet">
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <HBox prefHeight="68.0" prefWidth="331.0">
+                           <children>
+                              <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="78.0" text="Agregar" onAction="#onAgregarMas">
+                                 <HBox.margin>
+                                    <Insets left="20.0" top="10.0" />
+                                 </HBox.margin>
+                              </Button>
+                              <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="68.0" text="Editar">
+                                 <HBox.margin>
+                                    <Insets left="20.0" top="10.0" />
+                                 </HBox.margin>
+                              </Button>
+                              <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="82.0" text="Eliminar" onAction="#onEliminarMas">
+                                 <HBox.margin>
+                                    <Insets left="20.0" top="10.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children></AnchorPane>
+        </items>
+      </SplitPane>
+      <Button layoutX="574.0" layoutY="409.0" mnemonicParsing="false" text="Volver" onAction="#onVolver" />
+   </children>
+</AnchorPane>

@@ -1,13 +1,11 @@
 package co.edu.uniquindio.veterinaria.Modelo;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.List;
 
 @Data
+@Builder
 @EqualsAndHashCode
 @ToString
 @AllArgsConstructor
@@ -17,6 +15,4 @@ public class Mascota {
     private List<Cita> listaCitasMascota;
     private List<Consulta> listaConsultasMascota;
     private Propietario propietario;
-
-
 }
