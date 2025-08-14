@@ -1,16 +1,19 @@
 package co.edu.uniquindio.veterinaria.Modelo;
 
 
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
 @SuperBuilder
+@AllArgsConstructor
 
-//Modelo inicio
 
 public class Veterinaria {
     private String nombre;
@@ -19,8 +22,26 @@ public class Veterinaria {
     private List<Cita> listaCitas;
     private List<Mascota> listaMascotas;
     private List<Cita> listaCitasDelDia;
+    private static Veterinaria instancia;
 
-    // validacion existencia persona
+    private Veterinaria() {
+        this.nombre = "Veterinaria";
+        this.nit = "222222222";
+        this.listaPersonas = new ArrayList<>();
+        this.listaCitas = new ArrayList<>();
+        this.listaMascotas = new ArrayList<>();
+        this.listaCitasDelDia = new ArrayList<>();
+    }
+
+    //Singleton
+    public static Veterinaria getInstancia() {
+        if (instancia == null) {
+            instancia = new Veterinaria();
+        }
+        return instancia;
+    }
+
+    // Validacion existencia persona
     public boolean verificarPersonaExiste(Persona persona) {
         for (Persona usuario : listaPersonas) {
             if (persona.getId().equals(usuario.getId())) {
@@ -458,14 +479,4 @@ public class Veterinaria {
         agregarCitaDia(cita);
         eliminarCitaDia();
     }
-
-
-
-
-
-
-
 }
-
-
-

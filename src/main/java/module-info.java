@@ -3,6 +3,7 @@ module co.edu.uniquindio.veterinaria {
     requires javafx.fxml;
     requires static lombok;
     requires java.sql;
+    requires javafx.graphics;
 
 
     opens co.edu.uniquindio.veterinaria to javafx.fxml;
