@@ -15,30 +15,39 @@ public class Veterinario extends Persona {
     private String especialidad;
     private List<Cita> listaCitasVeterinario;
     private List<Consulta> listaConsultasVeterinario;
+    private List<Cita> listaCitasDiaVeterinario;
 
-    // agenda de citas unicamente del veterinario
-    public List<Cita> agendaMedico(Veterinaria veterinaria,Veterinario veterinario) {
-        if (veterinaria.getListaCitas().contains(veterinario)) {
-            return listaCitasVeterinario;
-        }
-        return null;
-    }
+
+
     // crear consulta
-    public boolean crearConsulta(Consulta consulta) {
+    public boolean crearConsulta(Veterinaria veterinaria, Consulta consulta) {
         if (consulta == null) {
             return false;
         }
         listaConsultasVeterinario.add(consulta);
+        veterinaria.agregarConsultaMascota(consulta);
+
         return true;
     }
-    // historial de consultas(historial medico) de la mascota
-    public List<Consulta> historialMascota(Mascota mascota) {
-        List<Consulta> listaConsultasMascotas = new ArrayList<>();
-        for (Consulta consulta : listaConsultasVeterinario) {
-            if (consulta.getMascota().equals(mascota)) {
-                listaConsultasMascotas.add(consulta);
-            }
+
+    public String agendaCitasDiaVeterinario() {
+        StringBuilder agenda = new StringBuilder();
+        agenda.append("Citas del día para ").append(this.getNombreCompleto()).append("\n");
+        for  (Cita cita : this.getListaCitasDiaVeterinario()) {
+            agenda.append(cita.getIdCita()).append("\t").append(cita.getFecha()).append("\t").append(cita.getHora())
+                    .append("\t").append(cita.getMascota().getNombre()).append("\n");
         }
-        return listaConsultasMascotas;
+        return agenda.toString();
     }
+
+   public String historialConsultasMascota(Mascota mascota) {
+        StringBuilder historialConsultasMascota = new StringBuilder();
+        historialConsultasMascota.append("Historial de consultas de ").append(mascota.getNombre()).append("\n");
+        for(Consulta consulta : mascota.getListaConsultasMascota()) {
+            historialConsultasMascota.append(consulta.getCodigoConsulta()).append("\t")
+                    .append(consulta.getMascota()).append("\t").append(consulta.getVeterinario()).append("\t")
+                    .append(consulta.getDiagnostico()).append("\t").append(consulta.getTratamiento()).append("\n");
+        }
+        return historialConsultasMascota.toString();
+   }
 }
