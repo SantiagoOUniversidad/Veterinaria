@@ -17,4 +17,6 @@ public class Mascota {
     private List<Cita> listaCitasMascota;
     private List<Consulta> listaConsultasMascota;
     private Propietario propietario;
+
+
 }
