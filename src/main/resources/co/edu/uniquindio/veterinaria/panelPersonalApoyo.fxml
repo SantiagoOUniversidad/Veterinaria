@@ -28,12 +28,12 @@
                                     <Insets bottom="10.0" />
                                  </VBox.margin>
                               </Button>
-                              <Button alignment="CENTER" mnemonicParsing="false" text="Citas">
+                              <Button alignment="CENTER" mnemonicParsing="false" text="Citas" onAction="#onCitas">
                                  <VBox.margin>
                                     <Insets bottom="10.0" />
                                  </VBox.margin>
                               </Button>
-                              <Button mnemonicParsing="false" text="Volver" />
+                              <Button mnemonicParsing="false" text="Cerrar sesion" onAction="#onVolver"/>
                            </children>
                         </VBox>
                      </children>

@@ -24,8 +24,21 @@ public class panelPersonalApoyoControlador implements Initializable {
     }
 
     @FXML
+    void onVolver(ActionEvent event) throws IOException {
+        Sesion.getInstancia().cerrarSesion();
+        ControladorPrincipal.openView("inicioSesion.fxml", "Iniciar Sesion", new Stage());
+        ControladorPrincipal.cerrarVentana((Stage) lblNombre.getScene().getWindow());
+    }
+
+    @FXML
     void onPyM(ActionEvent event) throws IOException {
         ControladorPrincipal.openView("panelPyM.fxml", "Panel Propietarios y Mascotas", new Stage());
+        ControladorPrincipal.cerrarVentana((Stage) lblNombre.getScene().getWindow());
+    }
+
+    @FXML
+    void onCitas(ActionEvent event) throws IOException {
+        ControladorPrincipal.openView("panelCrearCitas.fxml", "Panel Agendar Citas", new Stage());
         ControladorPrincipal.cerrarVentana((Stage) lblNombre.getScene().getWindow());
     }
 }

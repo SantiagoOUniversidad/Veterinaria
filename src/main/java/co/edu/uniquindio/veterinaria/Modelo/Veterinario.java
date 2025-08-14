@@ -13,9 +13,12 @@ import java.util.List;
 
 public class Veterinario extends Persona {
     private String especialidad;
-    private List<Cita> listaCitasVeterinario;
-    private List<Consulta> listaConsultasVeterinario;
-    private List<Cita> listaCitasDiaVeterinario;
+    @Builder.Default
+    private List<Cita> listaCitasVeterinario = new ArrayList<>();
+    @Builder.Default
+    private List<Consulta> listaConsultasVeterinario  = new ArrayList<>();
+    @Builder.Default
+    private List<Cita> listaCitasDiaVeterinario  = new ArrayList<>();
 
 
 
