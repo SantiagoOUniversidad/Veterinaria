@@ -64,13 +64,12 @@ public class VeterinariaTest {
                 new ArrayList<>(), new ArrayList<>(), propietario1);
 
         // Crear consultas
-        consulta1 = new Consulta("1","Otitis", "Antibióticos", true, mascota1, vet1);
-        consulta2 = new Consulta("2","Herida", "Curación", false, mascota2, vet2);
-
+        consulta1 = new Consulta("1", "Otitis", "Antibióticos", true, mascota1, vet1);
+        consulta2 = new Consulta("2", "Herida", "Curación", false, mascota2, vet2);
 
 
         // Crear cita
-        cita1 = new Cita("1",LocalDate.of(2025, 8, 15), LocalTime.of(10, 30),
+        cita1 = new Cita("1", LocalDate.of(2025, 8, 15), LocalTime.of(10, 30),
                 EstadoConsulta.PENDIENTE, vet1, mascota1);
 
         vet1.getListaCitasVeterinario().add(cita1);
@@ -95,9 +94,9 @@ public class VeterinariaTest {
 
     @Test
     void verificarPersonaExiste() {
-       assertTrue (veterinaria.verificarPersonaExiste(propietario1));
-       assertTrue(veterinaria.verificarPersonaExiste(apoyo1));
-       assertTrue(veterinaria.verificarPersonaExiste(vet1));
+        assertTrue(veterinaria.verificarPersonaExiste(propietario1));
+        assertTrue(veterinaria.verificarPersonaExiste(apoyo1));
+        assertTrue(veterinaria.verificarPersonaExiste(vet1));
     }
 
     @Test
@@ -106,7 +105,7 @@ public class VeterinariaTest {
                 .id("P2")
                 .nombreCompleto("Felipe")
                 .build();
-        assertTrue (veterinaria.agregarPersona(apoyo2));
+        assertTrue(veterinaria.agregarPersona(apoyo2));
     }
 
     @Test
@@ -120,7 +119,7 @@ public class VeterinariaTest {
                 .id("P2")
                 .nombreCompleto("Felipe")
                 .build();
-        assertTrue(veterinaria.actualizarPersona("P1",apoyo2 ));
+        assertTrue(veterinaria.actualizarPersona("P1", apoyo2));
     }
 
     @Test
@@ -161,126 +160,190 @@ public class VeterinariaTest {
 
     @Test
     void agregarVeterinario() {
-
+        Veterinario vet3 = Veterinario.builder()
+                .id("V3")
+                .nombreCompleto("Pedro Pérez")
+                .especialidad("Cardiología")
+                .listaCitasVeterinario(new ArrayList<>())
+                .listaConsultasVeterinario(new ArrayList<>())
+                .build();
+        assertTrue(veterinaria.agregarVeterinario(vet3));
     }
 
     @Test
     void eliminarVeterinario() {
+        assertTrue(veterinaria.eliminarVeterinario("V1"));
     }
 
     @Test
     void actalizarVeterinario() {
+        Veterinario vetNuevo = Veterinario.builder()
+                .id("V1")
+                .nombreCompleto("Carlos López Renovado")
+                .especialidad("Cirugía Avanzada")
+                .listaCitasVeterinario(new ArrayList<>())
+                .listaConsultasVeterinario(new ArrayList<>())
+                .build();
+        assertTrue(veterinaria.actualizarVeterinario(vetNuevo, "V1"));
     }
 
     @Test
     void mostrarVeterinario() {
+        assertEquals(vet1, veterinaria.mostrarVeterinario("V1"));
     }
+
 
     @Test
     void agregarPersonalApoyo() {
+        PersonalApoyo apoyoNuevo = PersonalApoyo.builder()
+                .id("P3")
+                .nombreCompleto("alfonso")
+                .build();
+        assertTrue(veterinaria.agregarPersonalApoyo(apoyoNuevo));
     }
 
     @Test
     void eliminarPersonalApoyo() {
+
+        assertTrue(veterinaria.eliminarPersonalApoyo("P1"));
     }
 
     @Test
     void actualizarPersonalApoyo() {
+
+        PersonalApoyo apoyoNuevo = PersonalApoyo.builder()
+                .id("P3")
+                .nombreCompleto("alfonso")
+                .build();
+        assertTrue(veterinaria.actualizarPersonalApoyo(apoyoNuevo, "P1"));
     }
 
     @Test
     void mostrarPersonalApoyo() {
+        veterinaria.getListaPersonas().add(apoyo1);
+        assertEquals(apoyo1, veterinaria.mostrarPersonalApoyo("P1"));
     }
 
     @Test
     void verificarCitaExiste() {
-    }
 
-    @Test
-    void agregarCitaVeterinaria() {
+        assertTrue(veterinaria.verificarCitaExiste(cita1));
     }
 
     @Test
     void eliminarCita() {
+        veterinaria.getListaCitas().add(cita1);
+        assertTrue(veterinaria.eliminarCita("1"));
     }
 
     @Test
     void actualizarCita() {
+        veterinaria.getListaCitas().add(cita1);
+        Cita citaNueva = new Cita("4", LocalDate.of(2025, 9, 15), LocalTime.of(10, 0),
+                EstadoConsulta.PENDIENTE, vet1, mascota2);
+        assertTrue(veterinaria.actualizarCita("1", citaNueva));
     }
 
     @Test
     void mostrarCita() {
+        veterinaria.getListaCitas().add(cita1);
+        assertEquals(cita1, veterinaria.mostrarCita("1"));
     }
 
     @Test
     void verificarCitaMascotaExiste() {
+        assertTrue(veterinaria.verificarCitaMascotaExiste(cita1));
     }
 
     @Test
     void agregarCitaMascota() {
+        Cita citaNueva = new Cita("4", LocalDate.of(2025, 9, 15), LocalTime.of(10, 0),
+                EstadoConsulta.PENDIENTE, vet1, mascota2);
+        assertTrue(veterinaria.agregarCitaMascota(citaNueva));
     }
 
     @Test
     void eliminarCitaMascota() {
+        assertTrue(veterinaria.eliminarCitaMascota("1"));
     }
 
     @Test
     void actualizarCitaMascota() {
+        Cita citaNueva = new Cita("4", LocalDate.of(2025, 9, 15), LocalTime.of(10, 0),
+                EstadoConsulta.PENDIENTE, vet1, mascota1);
+        assertTrue(veterinaria.actualizarCitaMascota("1", citaNueva));
+    }
+
+    @Test
+    void agregarCitaVeterinaria() {
+        Cita citaNueva = new Cita("4", LocalDate.of(2025, 9, 15), LocalTime.of(10, 0),
+                EstadoConsulta.PENDIENTE, vet1, mascota1);
+        assertTrue(veterinaria.agregarCitaVeterinaria(citaNueva));
     }
 
     @Test
     void verificarCitaVeterinarioExiste() {
+        assertTrue(veterinaria.verificarCitaVeterinarioExiste(cita1));
     }
 
     @Test
     void agregarCitaVeterinario() {
+        Cita citaNueva = new Cita("4", LocalDate.of(2025, 9, 15), LocalTime.of(10, 0),
+                EstadoConsulta.PENDIENTE, vet1, mascota2);
+        assertTrue(veterinaria.agregarCitaVeterinario(citaNueva));
     }
 
     @Test
     void eliminarCitaVeterinario() {
+        assertTrue(veterinaria.eliminarCitaVeterinario("1"));
     }
 
     @Test
     void actualizarCitaVeterinario() {
+        Cita citaNueva = new Cita("4", LocalDate.of(2025, 9, 15), LocalTime.of(10, 0),
+                EstadoConsulta.PENDIENTE, vet1, mascota1);
+        assertTrue(veterinaria.actualizarCitaVeterinario("1", citaNueva));
     }
 
     @Test
     void agregarCitaGeneral() {
+        Cita citaNueva = new Cita("5", LocalDate.of(2025, 10, 5), LocalTime.of(9, 30),
+                EstadoConsulta.PENDIENTE, vet1, mascota1);
+        assertTrue(veterinaria.agregarCitaGeneral(citaNueva));
     }
 
     @Test
     void actualizarEstadoCita() {
+        assertTrue(veterinaria.actualizarEstadoCita(cita1, EstadoConsulta.ATENDIDA));
     }
 
     @Test
     void agregarCitaDiaVeterinario() {
+        Cita citaNueva = new Cita("5", LocalDate.of(2025, 10, 5), LocalTime.of(9, 30),
+                EstadoConsulta.PENDIENTE, vet1, mascota1);
+        assertTrue(veterinaria.agregarCitaDiaVeterinario(citaNueva));
     }
 
     @Test
     void eliminarCitaDiaVeterinario() {
+        assertTrue(veterinaria.eliminarCitaDiaVeterinario(vet1));
     }
 
     @Test
     void actualizarListaCitasDiaVeterinario() {
+        assertTrue(veterinaria.actualizarListaCitasDiaVeterinario(cita1));
     }
 
     @Test
     void verificarConsultaMascota() {
+
+        assertTrue(veterinaria.verificarConsultaMascota(consulta1));
     }
 
     @Test
     void agregarConsultaMascota() {
+        Consulta consulta3 = new Consulta("3", "Tos De Perrera", "Antibióticos", true, mascota1, vet1);
+        assertTrue(veterinaria.agregarConsultaMascota(consulta3));
     }
 
-    @Test
-    void agregarCitaDia() {
-    }
-
-    @Test
-    void eliminarCitaDia() {
-    }
-
-    @Test
-    void actualizarCitasDia() {
-    }
 }

@@ -162,7 +162,7 @@ public class Veterinaria {
         return false;
     }
 
-    public boolean actalizarVeterinario(Veterinario veterinario, String id) {
+    public boolean actualizarVeterinario(Veterinario veterinario, String id) {
         if (id == null || veterinario == null) return false;
         Persona persona = mostrarPersona(id);
         if (persona instanceof Veterinario) {
@@ -399,36 +399,44 @@ public class Veterinaria {
         return true;
     }
 
-    public void agregarCitaDiaVeterinario(Cita cita) {
+    public boolean agregarCitaDiaVeterinario(Cita cita) {
         if (cita == null) {
-            return;
+            return false;
         }
         LocalDate hoy = LocalDate.now();
         if (cita.getFecha().equals(hoy)) {
             cita.getVeterinario().getListaCitasDiaVeterinario().add(cita);
         }
+        return true;
     }
 
-    public void eliminarCitaDiaVeterinario(Veterinario veterinario) {
+    public boolean eliminarCitaDiaVeterinario(Veterinario veterinario) {
         if (veterinario == null) {
-            return;
+            return false;
         }
         LocalDate hoy = LocalDate.now();
         List<Cita> lista = veterinario.getListaCitasDiaVeterinario();
+        if (lista == null) {
+            lista = new ArrayList<>();
+            veterinario.setListaCitasDiaVeterinario(lista);
+        }
+
         for (int  i = lista.size()-1 ; i >=0; i--) {
             Cita cita = lista.get(i);
             if (cita.getFecha().isBefore(hoy) || cita.getEstadoConsulta() == EstadoConsulta.ATENDIDA) {
                 lista.remove(i);
             }
         }
+        return true;
     }
 
-    public void actualizarListaCitasDiaVeterinario(Cita cita) {
+    public boolean actualizarListaCitasDiaVeterinario(Cita cita) {
         if  (cita == null || cita.getVeterinario() == null) {
-            return;
+            return false;
         }
         agregarCitaDiaVeterinario(cita);
         eliminarCitaDiaVeterinario(cita.getVeterinario());
+        return true;
     }
 
     public boolean verificarConsultaMascota(Consulta consulta) {

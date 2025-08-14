@@ -92,11 +92,14 @@ class VeterinarioTest {
 
 
     @Test
-    void crearConsulta() {
+    void crearConsultas() {
+        Consulta consulta3 = new Consulta("3","Herida", "Curación", false, mascota2, vet2);
+        assertTrue(vet2.crearConsultas(veterinaria, consulta3));
     }
 
     @Test
     void agendaCitasDiaVeterinario() {
+        assertEquals(vet1.agendaCitasDiaVeterinario(),"Carlos López");
     }
 
     @Test

@@ -13,14 +13,21 @@ import java.util.List;
 
 public class Veterinario extends Persona {
     private String especialidad;
-    private List<Cita> listaCitasVeterinario;
+    private List<Cita> listaCitasVeterinario ;
     private List<Consulta> listaConsultasVeterinario;
     private List<Cita> listaCitasDiaVeterinario;
 
+    public Veterinario(String nombreCompleto, String id, String especialidad, List<Cita> listaCitasVeterinario, List<Consulta> listaConsultasVeterinario, List<Cita> listaCitasDiaVeterinario) {
+        super(nombreCompleto, id);
+        this.especialidad = especialidad;
+        this.listaCitasVeterinario = new ArrayList<>();
+        this.listaConsultasVeterinario = new ArrayList<>();
+        this.listaCitasDiaVeterinario = new ArrayList<>();
+    }
 
 
     // crear consulta
-    public boolean crearConsulta(Veterinaria veterinaria, Consulta consulta) {
+    public boolean crearConsultas(Veterinaria veterinaria, Consulta consulta) {
         if (consulta == null) {
             return false;
         }

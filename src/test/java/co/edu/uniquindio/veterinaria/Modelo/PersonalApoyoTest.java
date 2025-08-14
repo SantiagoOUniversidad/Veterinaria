@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -21,7 +22,7 @@ class PersonalApoyoTest {
     @BeforeEach
     public void setUp() {
         veterinaria = Veterinaria.builder().nombre("veterinaria 24/7").nit("1234")
-                .listaPersonas(new ArrayList<>()).listaCitas(new ArrayList<>()).listaMascotas(new ArrayList<>()).build();
+                .listaPersonas(new ArrayList<>()).listaCitas(new ArrayList<>()).listaMascotas(new ArrayList<>()).listaCitasDelDia(new ArrayList<>()).build();
 
 
         // Crear veterinarios
@@ -31,6 +32,7 @@ class PersonalApoyoTest {
                 .especialidad("Cirugía")
                 .listaCitasVeterinario(new ArrayList<>())
                 .listaConsultasVeterinario(new ArrayList<>())
+                .listaCitasDiaVeterinario(new ArrayList<>())
                 .build();
 
         vet2 = Veterinario.builder()
@@ -64,8 +66,8 @@ class PersonalApoyoTest {
                 new ArrayList<>(), new ArrayList<>(), propietario1);
 
         // Crear consultas
-        consulta1 = new Consulta("1","Otitis", "Antibióticos", true, mascota1, vet1);
-        consulta2 = new Consulta("2","Herida", "Curación", false, mascota2, vet2);
+        consulta1 = new Consulta("1", "Otitis", "Antibióticos", true, mascota1, vet1);
+        consulta2 = new Consulta("2", "Herida", "Curación", false, mascota2, vet2);
 
         // Agregar consultas a listas de veterinarios y mascotas
         vet1.getListaConsultasVeterinario().add(consulta1);
@@ -87,8 +89,10 @@ class PersonalApoyoTest {
         veterinaria.getListaPersonas().add(propietario1);
         veterinaria.getListaMascotas().add(mascota1);
         veterinaria.getListaMascotas().add(mascota2);
+        propietario1.getListaMascotasPropietario().add(mascota1);
+        propietario1.getListaMascotasPropietario().add(mascota2);
         veterinaria.getListaCitas().add(cita1);
-        vet1.getListaCitasVeterinario().add(cita1);
+
     }
 
 
@@ -101,12 +105,12 @@ class PersonalApoyoTest {
                 .direccion("Calle 123")
                 .listaMascotasPropietario(new ArrayList<>())
                 .build();
-        assertTrue (apoyo1.agregarPropietario(veterinaria, propietario2));
+        assertTrue(apoyo1.agregarPropietario(veterinaria, propietario2));
     }
 
     @Test
     void eliminarPropietario() {
-        assertTrue(apoyo1.eliminarPropietario(veterinaria,"PR1"));
+        assertTrue(apoyo1.eliminarPropietario(veterinaria, "PR1"));
     }
 
     @Test
@@ -118,62 +122,76 @@ class PersonalApoyoTest {
                 .direccion("Calle 123")
                 .listaMascotasPropietario(new ArrayList<>())
                 .build();
-        assertTrue(apoyo1.actualizarPropietario(veterinaria,propietario2,"PR1"));
+        assertTrue(apoyo1.actualizarPropietario(veterinaria, propietario2, "PR1"));
     }
 
     @Test
     void mostrarPropietario() {
-        assertEquals(apoyo1.mostrarPropietario(veterinaria,"PR1"),propietario1);
+        assertEquals(apoyo1.mostrarPropietario(veterinaria, "PR1"), propietario1);
     }
 
     @Test
     void agregarMascota() {
         Mascota mascota3 = new Mascota("Canelo", "Perro", "Labrador", "5", "0002",
                 new ArrayList<>(), new ArrayList<>(), propietario1);
-        assertTrue(apoyo1.agregarMascota(veterinaria,mascota3));
+        assertTrue(apoyo1.agregarMascota(veterinaria, mascota3));
     }
 
     @Test
     void eliminarMascota() {
-        assertTrue(apoyo1.eliminarMascota(veterinaria,"0000"));
+        assertTrue(apoyo1.eliminarMascota(veterinaria, "0000"));
     }
 
     @Test
     void actualizarMascota() {
         Mascota mascota3 = new Mascota("Canelo", "Perro", "Labrador", "5", "0002",
                 new ArrayList<>(), new ArrayList<>(), propietario1);
-        assertTrue(apoyo1.actualizarMascota(veterinaria,mascota3,"0000"));
+        assertTrue(apoyo1.actualizarMascota(veterinaria, mascota3, "0000"));
     }
 
     @Test
     void mostrarMascota() {
-        assertEquals(apoyo1.mostrarMascota(veterinaria,"0000"),mascota1);
+        assertEquals(apoyo1.mostrarMascota(veterinaria, "0000"), mascota1);
     }
 
     @Test
     void agregarCita() {
         Cita cita2 = new Cita("2", LocalDate.of(2025, 9, 15), LocalTime.of(8, 30),
                 EstadoConsulta.PENDIENTE, vet1, mascota2);
-        assertTrue(apoyo1.agregarCita(veterinaria,cita2));
+        assertTrue(apoyo1.agregarCita(veterinaria, cita2));
     }
 
     @Test
     void eliminarCita() {
+        veterinaria.getListaCitas().add(cita1);
+        assertTrue(apoyo1.eliminarCita(veterinaria, "1"));
     }
 
     @Test
     void actualizarCita() {
+        veterinaria.getListaCitas().add(cita1);
+        Cita cita2 = new Cita("2", LocalDate.of(2025, 9, 15), LocalTime.of(8, 30),
+                EstadoConsulta.PENDIENTE, vet1, mascota2);
+        apoyo1.actualizarCita(veterinaria,cita2,"1");
+        assertEquals(veterinaria.getListaCitas().contains(cita1), true);
     }
 
     @Test
     void mostrarCita() {
+
+        assertEquals(cita1, apoyo1.mostrarCita(veterinaria, "1"));
     }
 
     @Test
     void actualizarEstadoCita() {
+       apoyo1.actualizarEstadoCita(veterinaria, cita1, EstadoConsulta.CANCELADA);
+        assertEquals(EstadoConsulta.CANCELADA, cita1.getEstadoConsulta());
     }
 
     @Test
     void citasDelDia() {
+
+        String citasHoy = apoyo1.citasDelDia(veterinaria);
+        assertTrue(citasHoy.contains("1"));
     }
 }
