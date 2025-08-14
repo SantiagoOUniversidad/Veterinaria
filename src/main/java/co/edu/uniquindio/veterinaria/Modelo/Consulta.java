@@ -11,6 +11,7 @@ import lombok.ToString;
 @AllArgsConstructor
 
 public class Consulta {
+    private String codigoConsulta;
     private String diagnostico, tratamiento;
     private boolean medicina;
     private Mascota mascota;
