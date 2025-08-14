@@ -71,10 +71,9 @@ public class VeterinariaTest {
         mascota1.getListaConsultasMascota().add(consulta1);
         mascota2.getListaConsultasMascota().add(consulta2);
 
-        // Crear cita ERROR!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-        //cita1 = new Cita(LocalDate.of(2025, 8, 15), LocalTime.of(10, 30),
-        //        EstadoConsulta.PENDIENTE, vet1, mascota1);
+        // Crear cita
+        cita1 = new Cita("1",LocalDate.of(2025, 8, 15), LocalTime.of(10, 30),
+                EstadoConsulta.PENDIENTE, vet1, mascota1);
 
         vet1.getListaCitasVeterinario().add(cita1);
         mascota1.getListaCitasMascota().add(cita1);
@@ -88,4 +87,6 @@ public class VeterinariaTest {
         veterinaria.getListaMascotas().add(mascota2);
         veterinaria.getListaCitas().add(cita1);
     }
+
+
 }
