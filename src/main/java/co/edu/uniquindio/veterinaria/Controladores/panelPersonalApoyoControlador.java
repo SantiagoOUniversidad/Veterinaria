@@ -1,11 +1,16 @@
 package co.edu.uniquindio.veterinaria.Controladores;
 
+import co.edu.uniquindio.veterinaria.Modelo.Cita;
 import co.edu.uniquindio.veterinaria.Modelo.Persona;
 import co.edu.uniquindio.veterinaria.Modelo.Sesion;
+import co.edu.uniquindio.veterinaria.Modelo.Veterinaria;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -14,13 +19,21 @@ import java.util.ResourceBundle;
 
 public class panelPersonalApoyoControlador implements Initializable {
     Persona persona =  Sesion.getInstancia().getPersona();
+    Veterinaria veterinaria = Veterinaria.getInstancia();
 
     @FXML
     private Label lblNombre;
 
+    @FXML
+    private ListView<Cita> lvCitas;
+
+    private ObservableList<Cita> citas;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         lblNombre.setText("Hola, " + persona.getNombreCompleto());
+        citas = FXCollections.observableArrayList(veterinaria.getListaCitas());
+        lvCitas.setItems(citas);
     }
 
     @FXML

@@ -39,7 +39,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </Label>
-            <ComboBox prefWidth="150.0" />
+            <ComboBox prefWidth="150.0" fx:id="cbEstado"/>
             <TextField promptText="Cedula Veterinario" fx:id="txtCedulaVet">
                <VBox.margin>
                   <Insets top="10.0" />
@@ -58,12 +58,12 @@
                      </HBox.margin>
                   </Button>
                   <Button mnemonicParsing="false" text="Editar Cita" />
-                  <Button mnemonicParsing="false" text="Eliminar Cita">
+                  <Button mnemonicParsing="false" text="Eliminar Cita" onAction="#onEliminarCita">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" text="Volver">
+                  <Button mnemonicParsing="false" text="Volver" onAction="#onVolver">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
