@@ -21,7 +21,7 @@ public class VeterinariaTest {
     @BeforeEach
     public void setUp() {
         veterinaria = Veterinaria.builder().nombre("veterinaria 24/7").nit("1234")
-                .listaPersonas(new ArrayList<>()).listaCitas(new ArrayList<>()).listaMascotas(new ArrayList<>()).build();
+                .listaPersonas(new ArrayList<>()).listaCitas(new ArrayList<>()).listaMascotas(new ArrayList<>()).listaCitasDelDia(new ArrayList<>()).build();
 
 
         // Crear veterinarios
