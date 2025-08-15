@@ -99,10 +99,28 @@ class VeterinarioTest {
 
     @Test
     void agendaCitasDiaVeterinario() {
-        assertEquals(vet1.agendaCitasDiaVeterinario(),"Carlos López");
+        Cita citaHoy = new Cita("2", LocalDate.now(), LocalTime.of(9, 0),
+                EstadoConsulta.PENDIENTE, vet1, mascota1);
+        vet1.getListaCitasDiaVeterinario().add(citaHoy);
+
+        // Ejecutamos
+        String agenda = vet1.agendaCitasDiaVeterinario();
+
+        // Verificamos
+        assertTrue(agenda.contains("Citas del día para " + vet1.getNombreCompleto()));
+        assertTrue(agenda.contains(citaHoy.getIdCita()));
+        assertTrue(agenda.contains(mascota1.getNombre()));
     }
 
     @Test
     void historialConsultasMascota() {
+
+        String historial = vet1.historialConsultasMascota(mascota1);
+
+
+        assertTrue(historial.contains("Historial de consultas de " + mascota1.getNombre()));
+        assertTrue(historial.contains(consulta1.getCodigoConsulta()));
+        assertTrue(historial.contains(consulta1.getDiagnostico()));
+        assertTrue(historial.contains(consulta1.getTratamiento()));
     }
 }

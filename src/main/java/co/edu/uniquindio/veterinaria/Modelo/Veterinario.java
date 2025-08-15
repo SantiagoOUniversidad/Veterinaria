@@ -12,18 +12,26 @@ import java.util.List;
 @ToString(callSuper = true)
 
 public class Veterinario extends Persona {
-    private String especialidad;
-    private List<Cita> listaCitasVeterinario ;
-    private List<Consulta> listaConsultasVeterinario;
-    private List<Cita> listaCitasDiaVeterinario;
 
-    public Veterinario(String nombreCompleto, String id, String especialidad, List<Cita> listaCitasVeterinario, List<Consulta> listaConsultasVeterinario, List<Cita> listaCitasDiaVeterinario) {
-        super(nombreCompleto, id);
-        this.especialidad = especialidad;
-        this.listaCitasVeterinario = new ArrayList<>();
-        this.listaConsultasVeterinario = new ArrayList<>();
-        this.listaCitasDiaVeterinario = new ArrayList<>();
-    }
+    private String especialidad;
+
+    @Builder.Default
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    private List<Cita> listaCitasVeterinario = new ArrayList<>();
+
+    @Builder.Default
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    private List<Consulta> listaConsultasVeterinario = new ArrayList<>();
+
+    @Builder.Default
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    private List<Cita> listaCitasDiaVeterinario = new ArrayList<>();
+
+
+
 
 
     // crear consulta

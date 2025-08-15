@@ -94,6 +94,8 @@ public class Veterinaria {
     }
 
 
+
+
     //validacion existencia mascota
     public boolean verificarMascotaExiste(Mascota mascota) {
         for (Mascota mascota1 : listaMascotas) {
@@ -146,6 +148,8 @@ public class Veterinaria {
         return null;
     }
 
+
+
     public boolean agregarVeterinario(Veterinario veterinario) {
         if (veterinario == null) {
             return false;
@@ -186,6 +190,8 @@ public class Veterinaria {
         }
         return agregarPersona(personalApoyo);
     }
+
+
 
     public boolean eliminarPersonalApoyo(String id) {
         if (id == null) return false;
@@ -233,6 +239,8 @@ public class Veterinaria {
             return true;
         }
     }
+
+
 
     // eliminar cita de la lista
     public boolean eliminarCita(String id) {
@@ -286,6 +294,8 @@ public class Veterinaria {
             return true;
         }
     }
+
+
 
     public boolean eliminarCitaMascota(String id) {
         Cita cita1 = mostrarCita(id);
@@ -342,6 +352,8 @@ public class Veterinaria {
         }
         return false;
     }
+
+
 
     public boolean actualizarCitaVeterinario(String id, Cita cita) {
         Veterinario veterinario = cita.getVeterinario();
@@ -429,6 +441,8 @@ public class Veterinaria {
         }
         return true;
     }
+
+
 
     public boolean actualizarListaCitasDiaVeterinario(Cita cita) {
         if  (cita == null || cita.getVeterinario() == null) {

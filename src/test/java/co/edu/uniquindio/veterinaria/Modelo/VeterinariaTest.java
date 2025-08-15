@@ -345,5 +345,73 @@ public class VeterinariaTest {
         Consulta consulta3 = new Consulta("3", "Tos De Perrera", "Antibióticos", true, mascota1, vet1);
         assertTrue(veterinaria.agregarConsultaMascota(consulta3));
     }
+    @Test
+    void agregarCitaDia() {
+
+
+        Cita citaHoy = new Cita(
+                "C001",
+                LocalDate.now(),
+                LocalTime.of(10, 0),
+                EstadoConsulta.PENDIENTE,
+                vet1,
+                null
+        );
+
+        veterinaria.agregarCitaDia(citaHoy);
+
+        assertTrue(veterinaria.getListaCitasDelDia().contains(citaHoy));
+        assertTrue(vet1.getListaCitasDiaVeterinario().contains(citaHoy));
+    }
+
+    @Test
+    void eliminarCitaDia() {
+
+        Cita citaPasada = new Cita(
+                "C002",
+                LocalDate.now().minusDays(1),
+                LocalTime.of(10, 0),
+                EstadoConsulta.PENDIENTE,
+                vet1,
+                null
+        );
+
+        Cita citaAtendida = new Cita(
+                "C003",
+                LocalDate.now(),
+                LocalTime.of(11, 0),
+                EstadoConsulta.ATENDIDA,
+                vet1,
+                null
+        );
+
+        veterinaria.getListaCitasDelDia().add(citaPasada);
+        veterinaria.getListaCitasDelDia().add(citaAtendida);
+
+        veterinaria.eliminarCitaDia();
+
+        assertFalse(veterinaria.getListaCitasDelDia().contains(citaPasada));
+        assertFalse(veterinaria.getListaCitasDelDia().contains(citaAtendida));
+    }
+
+    @Test
+    void actualizarCitasDia() {
+
+
+        Cita citaHoy = new Cita(
+                "C004",
+                LocalDate.now(),
+                LocalTime.of(12, 0),
+                EstadoConsulta.PENDIENTE,
+                vet1,
+                null
+        );
+
+        veterinaria.actualizarCitasDia(citaHoy);
+
+        assertTrue(veterinaria.getListaCitasDelDia().contains(citaHoy));
+        assertTrue(vet1.getListaCitasDiaVeterinario().contains(citaHoy));
+    }
+
 
 }

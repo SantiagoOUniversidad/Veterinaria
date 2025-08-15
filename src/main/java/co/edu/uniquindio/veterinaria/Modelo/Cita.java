@@ -9,8 +9,8 @@ import lombok.experimental.SuperBuilder;
 import java.time.LocalDate;
 import java.time.LocalTime;
 @Data
-@EqualsAndHashCode
-@ToString
+@EqualsAndHashCode(exclude = {"veterinario", "mascota"})
+@ToString(exclude = {"veterinario", "mascota"})
 @AllArgsConstructor
 
 public class Cita {
