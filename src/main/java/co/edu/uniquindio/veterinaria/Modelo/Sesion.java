@@ -7,7 +7,7 @@ import lombok.*;
 @AllArgsConstructor
 
 public class Sesion {
-    // Singleton
+    // Singleton documentar Olarte "/**"
     public static Sesion instancia;
     private Persona persona;
 
@@ -15,7 +15,7 @@ public class Sesion {
         this.persona = null;
     }
 
-    // Getter de nuestra instancia
+    // Getter de nuestra instancia documentar Olarte
     public static Sesion getInstancia() {
         if (instancia == null) {
             instancia = new Sesion();
@@ -23,7 +23,7 @@ public class Sesion {
         return instancia;
     }
 
-    // Metodo para cerrar sesion
+    // Metodo para cerrar sesion documentar Olarte
     public void cerrarSesion(){
         persona = null;
     }
