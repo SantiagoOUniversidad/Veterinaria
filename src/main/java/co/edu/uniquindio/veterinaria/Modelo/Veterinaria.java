@@ -33,7 +33,7 @@ public class Veterinaria {
         this.listaCitasDelDia = new ArrayList<>();
     }
 
-    //Singleton
+    //Singleton documentar Olarte
     public static Veterinaria getInstancia() {
         if (instancia == null) {
             instancia = new Veterinaria();
@@ -41,7 +41,12 @@ public class Veterinaria {
         return instancia;
     }
 
-    // Validacion existencia persona
+    /**
+     * Metodo para validar la existencia de una persona en una lista
+     * @param persona
+     * @return boolean
+     */
+
     public boolean verificarPersonaExiste(Persona persona) {
         for (Persona usuario : listaPersonas) {
             if (persona.getId().equals(usuario.getId())) {
@@ -51,7 +56,11 @@ public class Veterinaria {
         return false;
     }
 
-    //agregar persona a la lista
+    /**
+     * Metodo para agregar una persona a una lista
+     * @param persona
+     * @return boolean
+     */
     public boolean agregarPersona(Persona persona) {
         if (verificarPersonaExiste(persona)) {
             return false;
@@ -61,7 +70,12 @@ public class Veterinaria {
         }
     }
 
-    // eliminar persona de la lista
+    /**
+     * Metodo para eliminar a una persona de una lista
+     * @param id
+     * @return boolean
+     */
+
     public boolean eliminarPersona(String id) {
         for (int i = 0; i < listaPersonas.size(); i++) {
             if (listaPersonas.get(i).getId().equals(id)) {
@@ -72,7 +86,12 @@ public class Veterinaria {
         return false;
     }
 
-    // actualizar persona de la lista
+    /**
+     * Metodo para actualizar a una persona de una lista
+     * @param id
+     * @param persona
+     * @return boolean
+     */
     public boolean actualizarPersona(String id, Persona persona) {
         for (int i = 0; i < listaPersonas.size(); i++) {
             if (listaPersonas.get(i).getId().equals(id)) {
@@ -83,7 +102,11 @@ public class Veterinaria {
         return false;
     }
 
-    // mostrar persona en la lista
+    /**
+     * Metodo para mostrar una persona de una lista
+     * @param id
+     * @return persona
+     */
     public Persona mostrarPersona(String id) {
         for (Persona persona : listaPersonas) {
             if (persona.getId().equals(id)) {
@@ -93,10 +116,12 @@ public class Veterinaria {
         return null;
     }
 
+    /**
+     * Metodo para validar la existencia de una mascota en una lista
+     * @param mascota
+     * @return boolean
+     */
 
-
-
-    //validacion existencia mascota
     public boolean verificarMascotaExiste(Mascota mascota) {
         for (Mascota mascota1 : listaMascotas) {
             if (mascota.getIdveterinario().equals(mascota1.getIdveterinario())) {
@@ -106,7 +131,11 @@ public class Veterinaria {
         return false;
     }
 
-    // agregar mascota a la lista
+    /**
+     * metodo para agregr una mascota a una lista
+     * @param mascota
+     * @return boolean
+     */
     public boolean agregarMascota(Mascota mascota) {
         if (verificarMascotaExiste(mascota)) {
             return false;
@@ -116,7 +145,11 @@ public class Veterinaria {
         }
     }
 
-    // eliminar mascota de la lista
+    /**
+     * metodo para eliminar una mascota de una lista
+     * @param id
+     * @return boolean
+     */
     public boolean eliminarMascota(String id) {
         for (int i = 0; i < listaMascotas.size(); i++) {
             if (listaMascotas.get(i).getIdveterinario().equals(id)) {
@@ -127,7 +160,12 @@ public class Veterinaria {
         return false;
     }
 
-    //actualizar mascota de la lista
+    /**
+     * Metodo para actualizar una mascota de una lista
+     * @param id
+     * @param mascota
+     * @return boolean
+     */
     public boolean actualizarMascota(String id, Mascota mascota) {
         for (int i = 0; i < listaMascotas.size(); i++) {
             if (listaMascotas.get(i).getIdveterinario().equals(id)) {
@@ -138,7 +176,12 @@ public class Veterinaria {
         return false;
     }
 
-    //mostrar mascota en la lista
+    /**
+     * Metodo para mostrar una mascota de una lista
+     * @param id
+     * @return mascota
+     */
+
     public Mascota mostrarMascota(String id) {
         for (Mascota mascota : listaMascotas) {
             if (mascota.getIdveterinario().equals(id)) {
@@ -148,7 +191,11 @@ public class Veterinaria {
         return null;
     }
 
-
+    /**
+     * Metodo para agregar un veterinario a una lista
+     * @param veterinario
+     * @return boolean
+     */
 
     public boolean agregarVeterinario(Veterinario veterinario) {
         if (veterinario == null) {
@@ -156,6 +203,12 @@ public class Veterinaria {
         }
         return agregarPersona(veterinario);
     }
+
+    /**
+     * Metodo para eliminar a un veterinario de una lista
+     * @param id
+     * @return boolean
+     */
 
     public boolean eliminarVeterinario(String id) {
         if (id == null) return false;
@@ -166,6 +219,13 @@ public class Veterinaria {
         return false;
     }
 
+    /**
+     * Metodo para actualizar un veterinario de una lista
+     * @param veterinario
+     * @param id
+     * @return boolean
+     */
+
     public boolean actualizarVeterinario(Veterinario veterinario, String id) {
         if (id == null || veterinario == null) return false;
         Persona persona = mostrarPersona(id);
@@ -174,6 +234,12 @@ public class Veterinaria {
         }
         return false;
     }
+
+    /**
+     * Metodo para mostrar a un veterinrio de una lista
+     * @param id
+     * @return veterinario
+     */
 
     public Veterinario mostrarVeterinario(String id) {
         if (id == null) return null;
@@ -184,6 +250,12 @@ public class Veterinaria {
         return null;
     }
 
+    /**
+     * Metodo para agregar a un personal de apoyo a una lista
+     * @param personalApoyo
+     * @return boolean
+     */
+
     public boolean agregarPersonalApoyo(PersonalApoyo personalApoyo) {
         if (personalApoyo == null) {
             return false;
@@ -191,7 +263,11 @@ public class Veterinaria {
         return agregarPersona(personalApoyo);
     }
 
-
+    /**
+     * Metodo para eliminar a un personal de apoyo de una lista
+     * @param id
+     * @return boolean
+     */
 
     public boolean eliminarPersonalApoyo(String id) {
         if (id == null) return false;
@@ -202,6 +278,13 @@ public class Veterinaria {
         return false;
     }
 
+    /**
+     * Metodo para actualizar a un personal de apoyo de una lista
+     * @param personalApoyo
+     * @param id
+     * @return boolean
+     */
+
     public boolean actualizarPersonalApoyo(PersonalApoyo personalApoyo, String id) {
         if (id == null || personalApoyo == null) return false;
         Persona persona = mostrarPersona(id);
@@ -210,6 +293,12 @@ public class Veterinaria {
         }
         return false;
     }
+
+    /**
+     * Metodo para mostrar a un personal de apoyo de una lista
+     * @param id
+     * @return personalApoyo
+     */
 
     public PersonalApoyo mostrarPersonalApoyo(String id) {
         if (id == null) return null;
@@ -220,7 +309,12 @@ public class Veterinaria {
         return null;
     }
 
-    //validacion existencia cita
+    /**
+     * Metodo para validar la existencia de una cita en una lista
+     * @param cita
+     * @return boolean
+     */
+
     public boolean verificarCitaExiste(Cita cita) {
         for (Cita cita1 : listaCitas) {
             if (cita.getIdCita().equals(cita1.getIdCita())) {
@@ -230,7 +324,12 @@ public class Veterinaria {
         return false;
     }
 
-    // agregar cita a la lista
+    /**
+     * Metodo para agregar una cita a una lista
+     * @param cita
+     * @return boolean
+     */
+
     public boolean agregarCitaVeterinaria(Cita cita) {
         if (verificarCitaExiste(cita)) {
             return false;
@@ -240,9 +339,12 @@ public class Veterinaria {
         }
     }
 
+    /**
+     * Metodo para eliminar una cita de una lista
+     * @param id
+     * @return boolean
+     */
 
-
-    // eliminar cita de la lista
     public boolean eliminarCita(String id) {
         for (int i = 0; i < listaCitas.size(); i++) {
             if (listaCitas.get(i).getIdCita().equals(id)) {
@@ -253,7 +355,13 @@ public class Veterinaria {
         return false;
     }
 
-    //actualizar cita de la lista
+    /**
+     * Metodo para actualizar una cita de una lista
+     * @param id
+     * @param cita
+     * @return boolean
+     */
+
     public boolean actualizarCita(String id, Cita cita) {
         for (int i = 0; i < listaCitas.size(); i++) {
             if (listaCitas.get(i).getIdCita().equals(id)) {
@@ -264,7 +372,12 @@ public class Veterinaria {
         return false;
     }
 
-    //mostrar cita en la lista
+    /**
+     * Metodo para mostrar una cita de una lista
+     * @param id
+     * @return cita
+     */
+
     public Cita mostrarCita(String id) {
         for (Cita cita : listaCitas) {
             if (cita.getIdCita().equals(id)) {
@@ -273,6 +386,12 @@ public class Veterinaria {
         }
         return null;
     }
+
+    /**
+     * Metodo para validar la exitencia de una cita en una lista de una mascota
+     * @param cita
+     * @return boolean
+     */
 
     public boolean verificarCitaMascotaExiste(Cita cita) {
         Mascota mascota1 = cita.getMascota();
@@ -284,7 +403,12 @@ public class Veterinaria {
         return false;
     }
 
-    // agregar cita a la lista
+    /**
+     * Metodo para agregar una cita a una lista de una mascota
+     * @param cita
+     * @return boolean
+     */
+
     public boolean agregarCitaMascota(Cita cita) {
         Mascota mascota1 = cita.getMascota();
         if (verificarCitaMascotaExiste(cita)) {
@@ -295,7 +419,11 @@ public class Veterinaria {
         }
     }
 
-
+    /**
+     * Metodo para eliminar una cita de una lista de una mascota
+     * @param id
+     * @return boolean
+     */
 
     public boolean eliminarCitaMascota(String id) {
         Cita cita1 = mostrarCita(id);
@@ -309,6 +437,13 @@ public class Veterinaria {
         return false;
     }
 
+    /**
+     * Metodo para actualizar una cita de una lista de una mascota
+     * @param id
+     * @param cita
+     * @return boolean
+     */
+
     public boolean actualizarCitaMascota(String id, Cita cita) {
         Mascota mascota1 = cita.getMascota();
         for (int i = 0; i < mascota1.getListaCitasMascota().size(); i++) {
@@ -320,6 +455,12 @@ public class Veterinaria {
         return false;
     }
 
+    /**
+     * Metodo para validar la existencia de una cita en una lista de un veterinario
+     * @param cita
+     * @return boolean
+     */
+
     public boolean verificarCitaVeterinarioExiste(Cita cita) {
         Veterinario veterinario = cita.getVeterinario();
         for (Cita cita1 : veterinario.getListaCitasVeterinario()) {
@@ -330,7 +471,12 @@ public class Veterinaria {
         return false;
     }
 
-    // agregar cita a la lista
+    /**
+     * Metodo para agregar una cita a una lista de un veterinario
+     * @param cita
+     * @return boolean
+     */
+
     public boolean agregarCitaVeterinario(Cita cita) {
         Veterinario veterinario = cita.getVeterinario();
         if (verificarCitaVeterinarioExiste(cita)) {
@@ -340,6 +486,12 @@ public class Veterinaria {
             return true;
         }
     }
+
+    /**
+     * Metodo paraa eliminar una cita de una lista de un veterinario
+     * @param id
+     * @return boolean
+     */
 
     public boolean eliminarCitaVeterinario(String id) {
         Cita cita1 = mostrarCita(id);
@@ -353,7 +505,12 @@ public class Veterinaria {
         return false;
     }
 
-
+    /**
+     * Metodo para actualizar una lista de una cita de un veterinario
+     * @param id
+     * @param cita
+     * @return boolean
+     */
 
     public boolean actualizarCitaVeterinario(String id, Cita cita) {
         Veterinario veterinario = cita.getVeterinario();
@@ -365,6 +522,12 @@ public class Veterinaria {
         }
         return false;
     }
+
+    /**
+     * Metodo para agregar una cita de forma general a la lista de veterinaria, veterinario y mascota
+     * @param cita
+     * @return boolean
+     */
 
     public boolean agregarCitaGeneral(Cita cita) {
         if (cita == null) {
@@ -386,6 +549,13 @@ public class Veterinaria {
         actualizarListaCitasDiaVeterinario(cita);
         return true;
     }
+
+    /**
+     * Metodo para actualizar el estado de una cita ya existente en la lista de un veterinario, una mascota y la veterinaria
+     * @param cita
+     * @param nuevoEstado
+     * @return boolean
+     */
 
     public boolean actualizarEstadoCita(Cita cita, EstadoConsulta nuevoEstado) {
         if (cita == null) {
@@ -411,6 +581,11 @@ public class Veterinaria {
         return true;
     }
 
+    /**
+     * Metodo para agregar una cita a una lista de citas del dia de un veterinario
+     * @param cita
+     */
+
     public boolean agregarCitaDiaVeterinario(Cita cita) {
         if (cita == null) {
             return false;
@@ -421,6 +596,11 @@ public class Veterinaria {
         }
         return true;
     }
+
+    /**
+     * Metodo para eliminar una cita de una lista de citas del dia de un veterinario
+     * @param veterinario
+     */
 
     public boolean eliminarCitaDiaVeterinario(Veterinario veterinario) {
         if (veterinario == null) {
@@ -442,7 +622,10 @@ public class Veterinaria {
         return true;
     }
 
-
+    /**
+     * Metodo para actualizar las citas de una lista de citas del dia de un veterinario
+     * @param cita
+     */
 
     public boolean actualizarListaCitasDiaVeterinario(Cita cita) {
         if  (cita == null || cita.getVeterinario() == null) {
@@ -452,6 +635,12 @@ public class Veterinaria {
         eliminarCitaDiaVeterinario(cita.getVeterinario());
         return true;
     }
+
+    /**
+     * Metodo para validar la existencia de una consulta en una lista de una mascota
+     * @param consulta
+     * @return boolean
+     */
 
     public boolean verificarConsultaMascota(Consulta consulta) {
         Mascota mascota = consulta.getMascota();
@@ -463,6 +652,11 @@ public class Veterinaria {
         return false;
     }
 
+    /**
+     * Metodo para agregar una consulta a una lista de una mascota
+     * @param consulta
+     * @return boolean
+     */
 
     public boolean agregarConsultaMascota(Consulta consulta) {
         Mascota mascota = consulta.getMascota();
@@ -472,6 +666,11 @@ public class Veterinaria {
             return mascota.getListaConsultasMascota().add(consulta);
         }
     }
+
+    /**
+     * Metodo para agregar una cita a una lista de citas del dia de una veterinaria
+     * @param cita
+     */
 
     public void agregarCitaDia(Cita cita) {
         if (cita == null) {
@@ -484,6 +683,10 @@ public class Veterinaria {
         listaCitasDelDia.add(cita);
     }
 
+    /**
+     * Metodo para eliminar una cita de una lista de citas del dia de una veterinaria
+     */
+
     public void eliminarCitaDia() {
         LocalDate hoy = LocalDate.now();
         for (int  i = listaCitasDelDia.size()-1 ; i >=0; i--) {
@@ -493,6 +696,11 @@ public class Veterinaria {
             }
         }
     }
+
+    /**
+     * Metodo para actualizar las citas de una lista de citas del dia de una veterinaria
+     * @param cita
+     */
 
     public void actualizarCitasDia(Cita cita) {
         if  (cita == null) {

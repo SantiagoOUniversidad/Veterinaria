@@ -3,6 +3,7 @@ package co.edu.uniquindio.veterinaria.Modelo;
 import lombok.*;
         import lombok.experimental.SuperBuilder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -13,5 +14,6 @@ import java.util.List;
 public class Propietario extends Persona {
     private String telefono;
     private String direccion;
-    private List<Mascota> listaMascotasPropietario;
+    @Builder.Default
+    private List<Mascota> listaMascotasPropietario = new ArrayList<>();
 }

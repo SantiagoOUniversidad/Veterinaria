@@ -12,7 +12,6 @@ import java.util.List;
 @ToString(callSuper = true)
 
 public class Veterinario extends Persona {
-
     private String especialidad;
 
     @Builder.Default
@@ -33,8 +32,13 @@ public class Veterinario extends Persona {
 
 
 
+    /**
+     * Metodo para crear una consulta y agregarla a la lista del veterinario
+     * @param veterinaria
+     * @param consulta
+     * @return boolean
+     */
 
-    // crear consulta
     public boolean crearConsultas(Veterinaria veterinaria, Consulta consulta) {
         if (consulta == null) {
             return false;
@@ -45,6 +49,11 @@ public class Veterinario extends Persona {
         return true;
     }
 
+    /**
+     * Metodo para generar un String con las citas del dia de un veterinario
+     * @return String
+     */
+
     public String agendaCitasDiaVeterinario() {
         StringBuilder agenda = new StringBuilder();
         agenda.append("Citas del día para ").append(this.getNombreCompleto()).append("\n");
@@ -54,6 +63,12 @@ public class Veterinario extends Persona {
         }
         return agenda.toString();
     }
+
+    /**
+     * Metodo para generar un String con el historial de consultas de una mascota
+     * @param mascota
+     * @return String
+     */
 
    public String historialConsultasMascota(Mascota mascota) {
         StringBuilder historialConsultasMascota = new StringBuilder();
