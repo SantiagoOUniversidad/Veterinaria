@@ -1,13 +1,10 @@
 package co.edu.uniquindio.veterinaria.Modelo;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
+import lombok.*;
 
 @Data
+@Builder
 @EqualsAndHashCode
-@ToString
 @AllArgsConstructor
 
 public class Consulta {
@@ -17,4 +14,12 @@ public class Consulta {
     private Mascota mascota;
     private Veterinario veterinario;
 
+    @Override
+    public String toString() {
+        return "Codigo: " + codigoConsulta +
+                ", Diagnostico: " + diagnostico +
+                ", Tratamiento: " + tratamiento +
+                ", Medicina: " + medicina +
+                ", mascota: " + mascota;
+    }
 }

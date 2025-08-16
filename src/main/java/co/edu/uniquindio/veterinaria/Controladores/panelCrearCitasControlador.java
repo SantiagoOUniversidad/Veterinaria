@@ -16,7 +16,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeParseException;
 
-public class panelCrearCitas {
+public class panelCrearCitasControlador {
     Veterinaria veterinaria = Veterinaria.getInstancia();
     ControladorPrincipal controladorPrincipal = ControladorPrincipal.getInstancia();
 

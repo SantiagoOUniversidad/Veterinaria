@@ -8,9 +8,14 @@ import lombok.experimental.SuperBuilder;
 @Data
 @SuperBuilder
 @AllArgsConstructor
-@ToString(callSuper = true)
 
 public class Persona {
     private String nombreCompleto;
     private String id;
+
+    @Override
+    public String toString() {
+        return "Nombre: " + nombreCompleto +
+                ", ID: " + id;
+    }
 }

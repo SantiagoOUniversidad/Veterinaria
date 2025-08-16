@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class panelPyMControlador implements Initializable {
@@ -132,7 +133,7 @@ public class panelPyMControlador implements Initializable {
         String edad = txtEdad.getText();
         String idVet = txtIdVet.getText();
         try {
-            Mascota mascota = Mascota.builder().nombre(nombre).especie(especie).raza(raza).edad(edad).idveterinario(idVet).build();
+            Mascota mascota = Mascota.builder().nombre(nombre).especie(especie).raza(raza).edad(edad).idveterinario(idVet).listaConsultasMascota(new ArrayList<>()).build();
             if (!personalApoyo.agregarMascota(veterinaria, mascota)){
                 throw new Exception("Error agregando mascota");
             } else {

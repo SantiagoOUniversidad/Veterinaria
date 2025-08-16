@@ -6,7 +6,6 @@ import java.util.List;
 @Data
 @Builder
 @EqualsAndHashCode
-@ToString
 @AllArgsConstructor
 public class Mascota {
     private String nombre, especie, raza, edad, idveterinario;
@@ -20,4 +19,14 @@ public class Mascota {
     private List<Consulta> listaConsultasMascota;
 
     private Propietario propietario;
+
+    @Override
+    public String toString() {
+        return "Mascota: " +
+                "nombre: " + nombre +
+                ", especie: " + especie +
+                ", raza: " + raza +
+                ", edad: " + edad +
+                ", veterinario: " + idveterinario;
+    }
 }

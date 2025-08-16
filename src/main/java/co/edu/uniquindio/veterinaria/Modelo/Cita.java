@@ -21,6 +21,6 @@ public class Cita {
 
     @Override
     public String toString() {
-        return "Id" + ", " + idCita + ", " + fecha + ", " +  hora + ", " + estadoConsulta + ", " + "Nombre del paciente" + ": " +mascota.getNombre() + ", " + "Veterinario" + ": " + veterinario.getNombreCompleto();
+        return "Id" + ": " + idCita + ", " + fecha + ", " +  hora + ", " + estadoConsulta + ", " + "Nombre del paciente" + ": " +mascota.getNombre() + ", " + "Veterinario" + ": " + veterinario.getNombreCompleto();
     }
 }

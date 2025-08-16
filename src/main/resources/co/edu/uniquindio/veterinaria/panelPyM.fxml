@@ -94,7 +94,7 @@
                               <Insets top="15.0" />
                            </VBox.margin>
                         </TextField>
-                        <TextField promptText="Cedula veterinario" fx:id="txtIdVet">
+                        <TextField promptText="ID de Mascota" fx:id="txtIdVet">
                            <VBox.margin>
                               <Insets top="15.0" />
                            </VBox.margin>
